@@ -2,12 +2,14 @@ import { inject, Injectable } from '@angular/core';
 import { IUser } from '../models/user.interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private readonly http = inject(HttpClient);
+  private readonly router = inject(Router);
 
   private getUsers(): Observable<IUser[]> {
     return this.http.get<IUser[]>('users.json');
@@ -29,6 +31,7 @@ export class AuthService {
 
         //si encontramos el usuario e ingreso la contraseña correcta seteamos una nueva sesion
         this.setSession(foundUser);
+        this.router.navigate(['/dashboard']);
       },
     });
   }
