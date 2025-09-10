@@ -3,6 +3,7 @@ export interface IJoke {
   type: 'single' | 'twopart';
   setup?: string;
   delivery?: string;
+  destacado: boolean;
   joke?: string;
   flags: {
     nsfw: boolean;

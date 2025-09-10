@@ -1,17 +1,31 @@
 import { Component, inject, input, signal } from '@angular/core';
 import { IJoke } from '../../../core/models/joke.interface';
 import { AuthService } from '../../../core/services/auth.service';
-import { IUser } from '../../../core/models/user.interface';
+import { JokesService } from '../../../core/services/jokes.service';
+import { SwalDirective } from '@sweetalert2/ngx-sweetalert2';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-joke',
-  imports: [],
+  imports: [SwalDirective, CommonModule],
   templateUrl: './joke.component.html',
   styleUrl: './joke.component.css',
 })
 export class JokeComponent {
+  joke = input.required<IJoke>();
+  destacado = input<boolean>(false);
+
   private readonly authService = inject(AuthService);
+  private readonly jokesService = inject(JokesService);
+
   public user = signal(this.authService.user());
-  joke = input<IJoke>();
-  destacado = input<boolean>();
+
+  handleDeleteJoke(): void {
+    this.jokesService.deleteJoke(this.joke()?.id as number);
+  }
+
+  handleAddDestacado(): void {
+    this.joke().destacado = !this.joke().destacado;
+    this.jokesService.editJoke(this.joke());
+  }
 }
