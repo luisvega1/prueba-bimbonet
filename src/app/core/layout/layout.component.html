@@ -1,1 +1,16 @@
-<router-outlet> </router-outlet>
+<header class="p-5 shadow-md bg-amber-200">
+  <div class="max-w-2xl lg:max-w-7xl mx-auto flex justify-between items-center">
+    <img src="logo_ipsum.png" alt="Logo impsum" class="w-[150px]" />
+    <nav class="ml-auto">
+      <a class="mx-2">Lang:</a>
+      <a class="mx-2 cursor-pointer" (click)="handleLogout()">
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </a>
+    </nav>
+  </div>
+</header>
+<section class="p-5">
+  <div class="max-w-2xl lg:max-w-7xl mx-auto">
+    <router-outlet></router-outlet>
+  </div>
+</section>
