@@ -1,12 +1,14 @@
 import { Component, inject, signal } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+
 import { AuthService } from '../../services/auth.service';
 import { JokesService } from '../../services/jokes.service';
 import { JokeComponent } from '../../../shared/components/joke/joke.component';
 
 @Component({
   selector: 'app-home',
-  imports: [JokeComponent, AsyncPipe],
+  imports: [JokeComponent, AsyncPipe, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

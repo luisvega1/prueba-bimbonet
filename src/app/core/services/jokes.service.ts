@@ -66,6 +66,10 @@ export class JokesService {
     localStorage.setItem('jokes', JSON.stringify(jokes));
   }
 
+  private getLocalData(): IJoke[] {
+    return JSON.parse(localStorage.getItem('jokes') as string);
+  }
+
   public deleteJoke(jokeId: number): void {
     const filteredJokes = this.jokes.value.filter((joke) => joke.id != jokeId);
     this.jokes.next(filteredJokes);
@@ -76,5 +80,15 @@ export class JokesService {
     const jokeIdx = this.jokes.value.findIndex((item) => item.id == joke.id);
     this.jokes.value[jokeIdx] = joke;
     this.setLocalData(this.jokes.value);
+  }
+
+  saveJoke(joke: IJoke): void {
+    this.jokes.value.push(joke);
+    this.setLocalData(this.jokes.value);
+  }
+
+  getJoke(id: number): IJoke | undefined {
+    const currentJokes = this.getLocalData();
+    return currentJokes.find((joke: IJoke) => joke.id == id);
   }
 }

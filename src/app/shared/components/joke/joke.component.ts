@@ -1,13 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component, inject, input, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { SwalDirective } from '@sweetalert2/ngx-sweetalert2';
 import { IJoke } from '../../../core/models/joke.interface';
 import { AuthService } from '../../../core/services/auth.service';
 import { JokesService } from '../../../core/services/jokes.service';
-import { SwalDirective } from '@sweetalert2/ngx-sweetalert2';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-joke',
-  imports: [SwalDirective, CommonModule],
+  imports: [SwalDirective, CommonModule, RouterLink],
   templateUrl: './joke.component.html',
   styleUrl: './joke.component.css',
 })

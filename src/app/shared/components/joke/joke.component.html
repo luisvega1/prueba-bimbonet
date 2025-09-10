@@ -1,6 +1,6 @@
 <article
   class="border border-gray-100 shadow-lg rounded-xl p-5 me-5 w-full h-full"
-  [ngClass]="{ 'w-75!': destacado() }"
+  [ngClass]="{ 'w-75! sm:w-100!': destacado() }"
 >
   <div class="flex flex-row justify-between mb-3 items-center">
     <h3 class="font-bold text-[14px]">Categoría: {{ joke().category }}</h3>
@@ -14,7 +14,10 @@
         }
       </button>
       @if (user()?.role != "manager") {
-        <button class="mx-1 cursor-pointer">
+        <button
+          class="mx-1 cursor-pointer"
+          [routerLink]="['/dashboard/joke', joke().id]"
+        >
           <i class="fa-solid fa-pen-to-square text-blue-700"></i>
         </button>
         <button

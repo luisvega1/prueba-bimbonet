@@ -4,6 +4,7 @@ import { LoginComponent } from './core/pages/login/login.component';
 import { LayoutComponent } from './core/layout/layout.component';
 import { HomeComponent } from './core/pages/home/home.component';
 import { loginGuard } from './core/guards/login.guard';
+import { JokePageComponent } from './core/pages/joke-page/joke-page.component';
 
 export const routes: Routes = [
   {
@@ -19,6 +20,13 @@ export const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
+      },
+      {
+        path: 'joke',
+        children: [
+          { path: '', component: JokePageComponent },
+          { path: ':id', component: JokePageComponent },
+        ],
       },
     ],
   },
