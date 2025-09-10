@@ -1,0 +1,47 @@
+{
+  "login": {
+    "title": "Welcome!",
+    "description": "Enter your credentials to access the portal.",
+    "password": "Password",
+    "logInButton": "Log In"
+  },
+  "layout": {
+    "idioma": "Language",
+    "esp": "Spanish",
+    "eng": "English"
+  },
+  "dashboard": {
+    "bienvenida": "Welcome",
+    "descripcion": "From this panel you can manage the jokes content.",
+    "agregarButton": "Add new joke",
+    "sin_destacado1": "You don't have featured content, you can add one by pressing the",
+    "sin_destacado2": "on a joke card.",
+    "destacado": "Featured content",
+    "todo": "All content",
+    "filtrarCategoria": "Filter by category",
+    "todasCategorias": "All categories",
+    "ordenar": "Sort",
+    "no_bromas": "You don't have any jokes registered, to add new ones click the 'Add new joke' button at the top."
+  },
+  "jokePage": {
+    "tituloEditar": "Edit joke",
+    "descripcionEditar": "From this form you can edit a joke to your liking.",
+    "tituloCrear": "Add joke",
+    "descripcionCrear": "From this form you can add a new joke to your liking."
+  },
+  "jokeForm": {
+    "categoria": "Category",
+    "programacion": "Programming",
+    "tenebroso": "Spooky",
+    "navidad": "Christmas",
+    "tipo": "Type",
+    "singular": "Single",
+    "dosPartes": "Two parts",
+    "chiste": "Joke",
+    "validacionLength": "The joke must be at least 20 characters long.",
+    "iniciador": "Setup",
+    "gracia": "Punchline",
+    "destacado": "Featured",
+    "guardarChiste": "Save joke"
+  }
+}

@@ -1,0 +1,46 @@
+import { Routes } from '@angular/router';
+import { authGuard } from './core/guards/auth.guard';
+import { loginGuard } from './core/guards/login.guard';
+import { gerenteGuard } from './core/guards/gerente.guard';
+import { LayoutComponent } from './core/layout/layout.component';
+import { HomeComponent } from './core/pages/home/home.component';
+import { JokePageComponent } from './core/pages/joke-page/joke-page.component';
+import { LoginComponent } from './core/pages/login/login.component';
+
+export const routes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [loginGuard],
+  },
+  {
+    path: 'dashboard',
+    component: LayoutComponent,
+    canActivate: [authGuard],
+    children: [
+      {
+        path: '',
+        component: HomeComponent,
+      },
+      {
+        path: 'joke',
+        children: [
+          {
+            path: '',
+            component: JokePageComponent,
+            canActivate: [gerenteGuard],
+          },
+          {
+            path: ':id',
+            component: JokePageComponent,
+            canActivate: [gerenteGuard],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: '**',
+    redirectTo: 'login',
+  },
+];

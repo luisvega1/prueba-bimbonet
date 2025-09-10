@@ -1,0 +1,90 @@
+<form [formGroup]="jokeForm" (submit)="handleSubmitJoke()">
+  <div class="grid grid-cols-2 gap-8">
+    <div class="my-5">
+      <label for="category" class="font-bold text-[14px]">{{
+        "jokeForm.categoria" | translate
+      }}</label>
+      <select
+        id="category"
+        class="shadow-md border border-gray-200 rounded-lg p-2 w-full"
+        formControlName="category"
+      >
+        <option value="Programming">
+          {{ "jokeForm.programacion" | translate }}
+        </option>
+        <option value="Christmas">{{ "jokeForm.navidad" | translate }}</option>
+        <option value="Spooky">{{ "jokeForm.tenebroso" | translate }}</option>
+      </select>
+    </div>
+    <div class="my-5">
+      <label for="type" class="font-bold text-[14px]">{{
+        "jokeForm.tipo" | translate
+      }}</label>
+      <select
+        id="type"
+        class="shadow-md border border-gray-200 rounded-lg p-2 w-full"
+        formControlName="type"
+        (change)="handleTypeChange()"
+      >
+        <option value="single">{{ "jokeForm.singular" | translate }}</option>
+        <option value="twopart">{{ "jokeForm.dosPartes" | translate }}</option>
+      </select>
+    </div>
+  </div>
+  @if (jokeForm.get("type")?.value == "single") {
+    <div class="my-5">
+      <label for="type" class="font-bold text-[14px]">{{
+        "jokeForm.chiste" | translate
+      }}</label>
+      <textarea
+        id="type"
+        class="shadow-md border border-gray-200 rounded-lg p-2 w-full"
+        formControlName="joke"
+      ></textarea>
+      <span class="text-gray-700 font-bold text-[12px]"
+        >*{{ "jokeForm.validacionLength" | translate }}</span
+      >
+    </div>
+  }
+  @if (jokeForm.get("type")?.value == "twopart") {
+    <div class="grid grid-cols-2 gap-8">
+      <div>
+        <label for="setup" class="font-bold text-[14px]">{{
+          "jokeForm.iniciador" | translate
+        }}</label>
+        <textarea
+          id="setup"
+          class="shadow-md border border-gray-200 rounded-lg p-2 w-full"
+          formControlName="setup"
+        ></textarea>
+      </div>
+      <div>
+        <label for="delivery" class="font-bold text-[14px]">{{
+          "jokeForm.gracia" | translate
+        }}</label>
+        <textarea
+          id="delivery"
+          class="shadow-md border border-gray-200 rounded-lg p-2 w-full"
+          formControlName="delivery"
+        ></textarea>
+      </div>
+    </div>
+  }
+  <div class="flex flex-col my-5">
+    <label for="destacado" class="font-bold text-[14px] switch">{{
+      "jokeForm.destacado" | translate
+    }}</label>
+    <label class="switch">
+      <input type="checkbox" id="destacado" formControlName="destacado" />
+      <span class="slider round"></span>
+    </label>
+  </div>
+  <button
+    type="submit"
+    class="rounded-full bg-blue-950 py-2 px-10 text-white"
+    [disabled]="jokeForm.invalid"
+    [class.bg-gray-400]="jokeForm.invalid"
+  >
+    {{ "jokeForm.guardarChiste" | translate }}
+  </button>
+</form>

@@ -1,0 +1,47 @@
+{
+  "login": {
+    "title": "Bienvenido!",
+    "description": "Ingresa tus credenciales para acceder al portal.",
+    "password": "Contraseña",
+    "logInButton": "Ingresar"
+  },
+  "layout": {
+    "idioma": "Idioma",
+    "esp": "Español",
+    "eng": "Ingles"
+  },
+  "dashboard": {
+    "bienvenida": "Bienvenido",
+    "descripcion": "Desde este panel podras administrar el contenido de bromas.",
+    "agregarButton": "Agregar nueva broma",
+    "sin_destacado1": "No cuentas con contenido destacado, puedes agregar un contenido a destacados presionando la",
+    "sin_destacado2": "en una tarjeta de chiste.",
+    "destacado": "Contenido destacado",
+    "todo": "Todo el contenido",
+    "filtrarCategoria": "Filtrar por categoría",
+    "todasCategorias": "Todas las categorías",
+    "ordenar": "Ordenar",
+    "no_bromas": "No cuentas con chistes registrados, para agregar nuevos haz click en el botón 'Agregar nuevo chiste' en la parte de arriba."
+  },
+  "jokePage": {
+    "tituloEditar": "Editar chiste",
+    "descripcionEditar": "Desde este formulario podras editar un chiste de tu gusto.",
+    "tituloCrear": "Agregar chiste",
+    "descripcionCrear": "Desde este formulario podras agregar un nuevo chiste de tu gusto."
+  },
+  "jokeForm": {
+    "categoria": "Cateogoría",
+    "programacion": "Programacion",
+    "tenebroso": "Tenebroso",
+    "navidad": "Navidad",
+    "tipo": "Tipo",
+    "singular": "Singular",
+    "dosPartes": "Dos partes",
+    "chiste": "Chiste",
+    "validacionLength": "El chiste debe de tener al menos 20 caracteres de longitud.",
+    "iniciador": "Iniciador",
+    "gracia": "Gracia",
+    "destacado": "Destacado",
+    "guardarChiste": "Guardar chiste"
+  }
+}

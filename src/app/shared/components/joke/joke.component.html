@@ -1,0 +1,47 @@
+<article
+  class="border border-gray-100 shadow-lg rounded-xl p-5 me-5 w-full h-full"
+  [ngClass]="{ 'w-75! sm:w-100!': destacado() }"
+>
+  <div class="flex flex-row justify-between mb-3 items-center">
+    <h3 class="font-bold text-[14px]">
+      {{ "jokeForm.categoria" | translate }}: {{ joke().category }}
+    </h3>
+    <div>
+      <button class="mx-1 cursor-pointer" (click)="handleAddDestacado()">
+        @if (!joke().destacado) {
+          <i class="fa-regular fa-star text-yellow-400"></i>
+        }
+        @if (joke().destacado) {
+          <i class="fa-solid fa-star text-yellow-400"></i>
+        }
+      </button>
+      @if ((user$ | async)?.role != "coordinator") {
+        <button
+          class="mx-1 cursor-pointer"
+          [routerLink]="['/dashboard/joke', joke().id]"
+        >
+          <i class="fa-solid fa-pen-to-square text-blue-700"></i>
+        </button>
+        <button
+          class="mx-1 cursor-pointer"
+          [swal]="{
+            title: '¿Deseas eliminar esta broma?',
+            showDenyButton: true,
+            denyButtonText: 'No borrar',
+            confirmButtonText: 'Confirmar',
+          }"
+          (confirm)="handleDeleteJoke()"
+        >
+          <i class="fa-solid fa-trash text-red-600"></i>
+        </button>
+      }
+    </div>
+  </div>
+  @if (joke().type == "single") {
+    <p class="break-normal">{{ joke().joke }}</p>
+  }
+  @if (joke().type == "twopart") {
+    <p class="break-normal">- {{ joke().setup }}</p>
+    <p class="break-normal">- {{ joke().delivery }}</p>
+  }
+</article>

@@ -1,0 +1,19 @@
+<section>
+  <h2 class="font-bold text-2xl">
+    @if (jokeId) {
+      {{ "jokePage.tituloEditar" | translate }}
+    } @else {
+      {{ "jokePage.tituloCrear" | translate }}
+    }
+  </h2>
+  <p>
+    @if (jokeId) {
+      {{ "jokePage.descripcionEditar" | translate }}
+    } @else {
+      {{ "jokePage.descripcionCrear" | translate }}
+    }
+  </p>
+</section>
+<section>
+  <app-joke-form [jokeId]="jokeId" />
+</section>

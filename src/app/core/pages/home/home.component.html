@@ -1,0 +1,84 @@
+<section>
+  <h2 class="font-bold text-2xl">
+    {{ "dashboard.bienvenida" | translate }}, {{ (user$ | async)?.name }}!
+  </h2>
+  <p>{{ "dashboard.descripcion" | translate }}</p>
+</section>
+<section class="my-5 w-full">
+  <button
+    [routerLink]="['/dashboard/joke']"
+    class="rounded-full bg-blue-950 py-2 px-10 text-white"
+  >
+    <i class="fa-regular fa-square-plus"></i>
+    {{ "dashboard.agregarButton" | translate }}
+  </button>
+</section>
+<section class="my-5">
+  <h2 class="font-bold text-2xl mb-5">
+    {{ "dashboard.destacado" | translate }}:
+  </h2>
+  <div class="flex pb-5 overflow-x-scroll">
+    @for (joke of jokes$ | async | filterDestacados; track joke.id) {
+      <app-joke [joke]="joke" [destacado]="true" />
+    } @empty {
+      <p>
+        {{ "dashboard.sin_destacado1" | translate }}
+        <i class="fa-regular fa-star text-yellow-400"></i>
+        {{ "dashboard.sin_destacado2" | translate }}
+      </p>
+    }
+  </div>
+</section>
+<section class="my-5">
+  <h2 class="font-bold text-2xl mb-5">{{ "dashboard.todo" | translate }}:</h2>
+
+  <div class="mb-6 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+    <div class="flex flex-row gap-4 items-start sm:items-center">
+      <div class="flex flex-col">
+        <label for="categoryFilter" class="font-bold text-sm mb-1"
+          >{{ "dashboard.filtrarCategoria" | translate }}:</label
+        >
+        <select
+          id="categoryFilter"
+          class="shadow-md border border-gray-200 rounded-lg p-2 min-w-[150px]"
+          [value]="filtroCategoria()"
+          (change)="handleCambioCategoria($event)"
+        >
+          <option value="all">
+            {{ "dashboard.todasCategorias" | translate }}
+          </option>
+          <option value="Programming">
+            {{ "jokeForm.programacion" | translate }}
+          </option>
+          <option value="Christmas">
+            {{ "jokeForm.navidad" | translate }}
+          </option>
+          <option value="Spooky">{{ "jokeForm.tenebroso" | translate }}</option>
+        </select>
+      </div>
+      <div class="flex flex-col">
+        <label class="font-bold text-sm mb-1"
+          >{{ "dashboard.ordenar" | translate }}:</label
+        >
+        <button
+          type="button"
+          class="px-4 py-2 rounded-lg border border-gray-200 shadow-md hover:bg-gray-50 transition-colors"
+          (click)="handleOrdenarAlfabetico()"
+        >
+          <i class="fa-solid fa-sort-alpha-down mr-2"></i>
+          {{ filtroAlfabeticoActivo() ? "A-Z (Activo)" : "A-Z" }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    @for (joke of jokesFiltrados(); track joke.id) {
+      <app-joke [joke]="joke" />
+    } @empty {
+      <p>
+        {{ "dashboard.no_bromas" | translate }}
+      </p>
+    }
+  </div>
+</section>
