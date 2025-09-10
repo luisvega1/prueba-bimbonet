@@ -1,0 +1,10 @@
+<section>
+  <h2 class="font-bold text-2xl">{{ jokeId ? "Editar" : "Agregar" }} chiste</h2>
+  <p>
+    Desde este formulario podras
+    {{ jokeId ? "editar un" : "agregar un nuevo" }} chiste de tu gusto.
+  </p>
+</section>
+<section>
+  <app-joke-form [jokeId]="jokeId" />
+</section>

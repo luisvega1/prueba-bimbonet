@@ -1,0 +1,78 @@
+<form [formGroup]="jokeForm" (submit)="handleSubmitJoke()">
+  <div class="grid grid-cols-2 gap-8">
+    <div class="my-5">
+      <label for="category" class="font-bold text-[14px]">Cateogoría</label>
+      <select
+        id="category"
+        class="shadow-md border border-gray-200 rounded-lg p-2 w-full"
+        formControlName="category"
+      >
+        <option value="Programming">Programming</option>
+        <option value="Christmas">Christmas</option>
+        <option value="Spooky">Spooky</option>
+      </select>
+    </div>
+    <div class="my-5">
+      <label for="type" class="font-bold text-[14px]">Tipo</label>
+      <select
+        id="type"
+        class="shadow-md border border-gray-200 rounded-lg p-2 w-full"
+        formControlName="type"
+        (change)="handleTypeChange()"
+      >
+        <option value="single">Single</option>
+        <option value="twopart">Twopart</option>
+      </select>
+    </div>
+  </div>
+  @if (jokeForm.get("type")?.value == "single") {
+    <div class="my-5">
+      <label for="type" class="font-bold text-[14px]">Chiste</label>
+      <textarea
+        id="type"
+        class="shadow-md border border-gray-200 rounded-lg p-2 w-full"
+        formControlName="joke"
+      ></textarea>
+      <span class="text-gray-700 font-bold text-[12px]"
+        >*El chiste debe de tener al menos 20 caracteres de longitud.</span
+      >
+    </div>
+  }
+  @if (jokeForm.get("type")?.value == "twopart") {
+    <div class="grid grid-cols-2 gap-8">
+      <div>
+        <label for="setup" class="font-bold text-[14px]">Iniciador</label>
+        <textarea
+          id="setup"
+          class="shadow-md border border-gray-200 rounded-lg p-2 w-full"
+          formControlName="setup"
+        ></textarea>
+      </div>
+      <div>
+        <label for="delivery" class="font-bold text-[14px]">Gracia</label>
+        <textarea
+          id="delivery"
+          class="shadow-md border border-gray-200 rounded-lg p-2 w-full"
+          formControlName="delivery"
+        ></textarea>
+      </div>
+    </div>
+  }
+  <div class="flex flex-col my-5">
+    <label for="destacado" class="font-bold text-[14px] switch"
+      >Destacado</label
+    >
+    <label class="switch">
+      <input type="checkbox" id="destacado" formControlName="destacado" />
+      <span class="slider round"></span>
+    </label>
+  </div>
+  <button
+    type="submit"
+    class="rounded-full bg-blue-950 py-2 px-10 text-white"
+    [disabled]="jokeForm.invalid"
+    [class.bg-gray-400]="jokeForm.invalid"
+  >
+    Guardar chiste
+  </button>
+</form>

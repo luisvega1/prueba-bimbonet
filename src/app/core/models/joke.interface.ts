@@ -3,8 +3,9 @@ export interface IJoke {
   type: 'single' | 'twopart';
   setup?: string;
   delivery?: string;
+  destacado: boolean;
   joke?: string;
-  flags: {
+  flags?: {
     nsfw: boolean;
     religious: boolean;
     political: boolean;
@@ -13,8 +14,8 @@ export interface IJoke {
     explicit: boolean;
   };
   id: number;
-  safe: boolean;
-  lang: string;
+  safe?: boolean;
+  lang?: string;
 }
 
 export interface IJokeResponse {
