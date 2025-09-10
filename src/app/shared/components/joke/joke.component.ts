@@ -19,7 +19,7 @@ export class JokeComponent {
   private readonly authService = inject(AuthService);
   private readonly jokesService = inject(JokesService);
 
-  public user = signal(this.authService.user());
+  public user$ = this.authService.user$;
 
   handleDeleteJoke(): void {
     this.jokesService.deleteJoke(this.joke()?.id as number);

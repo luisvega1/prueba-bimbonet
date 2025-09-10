@@ -19,7 +19,7 @@ export class HomeComponent {
   public jokes$ = this.jokesService.jokes;
   public destacados$ = this.jokesService.destacados;
 
-  public user = signal(this.authService.user());
+  public user$ = this.authService.user$;
 
   constructor() {
     this.jokesService.initializeData();
