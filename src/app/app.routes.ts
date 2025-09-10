@@ -1,10 +1,11 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
-import { LoginComponent } from './core/pages/login/login.component';
+import { loginGuard } from './core/guards/login.guard';
+import { gerenteGuard } from './core/guards/gerente.guard';
 import { LayoutComponent } from './core/layout/layout.component';
 import { HomeComponent } from './core/pages/home/home.component';
-import { loginGuard } from './core/guards/login.guard';
 import { JokePageComponent } from './core/pages/joke-page/joke-page.component';
+import { LoginComponent } from './core/pages/login/login.component';
 
 export const routes: Routes = [
   {
@@ -24,8 +25,16 @@ export const routes: Routes = [
       {
         path: 'joke',
         children: [
-          { path: '', component: JokePageComponent },
-          { path: ':id', component: JokePageComponent },
+          {
+            path: '',
+            component: JokePageComponent,
+            canActivate: [gerenteGuard],
+          },
+          {
+            path: ':id',
+            component: JokePageComponent,
+            canActivate: [gerenteGuard],
+          },
         ],
       },
     ],
