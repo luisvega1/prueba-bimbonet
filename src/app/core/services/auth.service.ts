@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { IUser } from '../models/user.interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class AuthService {
   private readonly http = inject(HttpClient);
   private readonly router = inject(Router);
+
+  public user = signal<IUser | undefined>(undefined);
 
   private getUsers(): Observable<IUser[]> {
     return this.http.get<IUser[]>('users.json');
@@ -36,8 +38,9 @@ export class AuthService {
     });
   }
 
-  public setSession(user: IUser): void {
+  private setSession(user: IUser): void {
     sessionStorage.setItem('session', JSON.stringify(user));
+    this.user.set(user);
   }
 
   public removeCurrentSession(): void {
