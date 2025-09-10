@@ -8,6 +8,8 @@ import { JokesService } from '../../services/jokes.service';
 import { JokeComponent } from '../../../shared/components/joke/joke.component';
 import { IJoke } from '../../models/joke.interface';
 import { TranslatePipe } from '@ngx-translate/core';
+import { map } from 'rxjs';
+import { FilterDestacadosPipe } from '../../../shared/pipes/filter-destacados.pipe';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +20,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     CommonModule,
     FormsModule,
     TranslatePipe,
+    FilterDestacadosPipe,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
@@ -27,7 +30,6 @@ export class HomeComponent {
   private readonly jokesService = inject(JokesService);
 
   public jokes$ = this.jokesService.jokes;
-  public destacados$ = this.jokesService.destacados;
 
   public user$ = this.authService.user$;
 

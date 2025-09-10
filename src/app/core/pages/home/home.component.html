@@ -18,12 +18,14 @@
     {{ "dashboard.destacado" | translate }}:
   </h2>
   <div class="flex pb-5 overflow-x-scroll">
-    @for (joke of jokes$ | async; track joke.id) {
-      @if (joke.destacado) {
-        <app-joke [joke]="joke" [destacado]="true" />
-      }
+    @for (joke of jokes$ | async | filterDestacados; track joke.id) {
+      <app-joke [joke]="joke" [destacado]="true" />
     } @empty {
-      <p>{{ "dashboard.sin_destacado" | translate }}</p>
+      <p>
+        {{ "dashboard.sin_destacado1" | translate }}
+        <i class="fa-regular fa-star text-yellow-400"></i>
+        {{ "dashboard.sin_destacado2" | translate }}
+      </p>
     }
   </div>
 </section>
