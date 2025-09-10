@@ -5,4 +5,12 @@
   * {
     font-family: Arial, Helvetica, sans-serif;
   }
+  h1,
+  h2,
+  h3 {
+    color: var(--color-blue-950);
+  }
+  p {
+    color: var(--color-blue-950);
+  }
 }

@@ -3,8 +3,18 @@
   <p>Desde este panel podras administrar el contenido de bromas.</p>
 </section>
 <section class="my-5">
-  <h2 class="font-bold text-2xl">Contenido destacado:</h2>
+  <h2 class="font-bold text-2xl mb-5">Contenido destacado:</h2>
+  <div class="flex p-1 overflow-x-scroll">
+    @for (joke of destacados$ | async; track joke.id) {
+      <app-joke [joke]="joke" [destacado]="true" />
+    }
+  </div>
 </section>
 <section class="my-5">
-  <h2 class="font-bold text-2xl">Todo el contenido:</h2>
+  <h2 class="font-bold text-2xl mb-5">Todo el contenido:</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    @for (joke of jokes$ | async; track joke.id) {
+      <app-joke [joke]="joke" />
+    }
+  </div>
 </section>

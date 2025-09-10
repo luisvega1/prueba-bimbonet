@@ -19,7 +19,7 @@ export class JokesService {
   // API DOCS: https://v2.jokeapi.dev/?ref=freepublicapis.com#try-it
   private getJokes(): Observable<IJokeResponse> {
     return this.http.get<IJokeResponse>(
-      `${this.API_ENDPOINT}joke/Programming,Spooky,Christmas?amount=10?safe-mode?lang=es`,
+      `${this.API_ENDPOINT}joke/Programming,Spooky,Christmas?amount=10&safe-mode`,
     );
   }
 
