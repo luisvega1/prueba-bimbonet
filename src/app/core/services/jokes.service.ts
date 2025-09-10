@@ -12,9 +12,6 @@ export class JokesService {
   private readonly http = inject(HttpClient);
 
   public jokes: BehaviorSubject<IJoke[]> = new BehaviorSubject<IJoke[]>([]);
-  public destacados: BehaviorSubject<IJoke[]> = new BehaviorSubject<IJoke[]>(
-    [],
-  );
 
   // API DOCS: https://v2.jokeapi.dev/?ref=freepublicapis.com#try-it
   private getJokes(): Observable<IJokeResponse> {
@@ -79,6 +76,7 @@ export class JokesService {
   public editJoke(joke: IJoke): void {
     const jokeIdx = this.jokes.value.findIndex((item) => item.id == joke.id);
     this.jokes.value[jokeIdx] = joke;
+    this.jokes.next([...this.jokes.value]);
     this.setLocalData(this.jokes.value);
   }
 

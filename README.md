@@ -1,59 +1,223 @@
-# PruebaBimbonet
+# Prueba Técnica BimboNet - Sistema de Gestión de Bromas
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+## 📋 Descripción del Proyecto
 
-## Development server
+Este proyecto es una **prueba técnica para BimboNet** que implementa un sistema de gestión de bromas utilizando la API de JokeAPI. La aplicación permite a los usuarios autenticados gestionar bromas de diferentes categorías con funcionalidades específicas según su rol de usuario.
 
-To start a local development server, run:
+## 🚀 Tecnologías Utilizadas
 
+### Framework Principal
+- **Angular 19.2.0** - Framework principal de la aplicación
+
+### Librerías Principales
+- **@ngx-translate/core (17.0.0)** - Internacionalización multiidioma
+- **@ngx-translate/http-loader (17.0.0)** - Cargador HTTP para traducciones
+- **@sweetalert2/ngx-sweetalert2 (14.0.0)** - Alertas y modales elegantes
+- **tailwindcss (4.1.13)** - Framework CSS utilitario
+- **@tailwindcss/postcss (4.1.13)** - Integración de Tailwind con PostCSS
+
+### Características Técnicas Avanzadas
+- **Angular Standalone Components** - Componentes independientes sin módulos
+- **Angular Signals** - Sistema reactivo moderno de Angular
+- **Reactive Forms** - Formularios reactivos con validaciones personalizadas
+- **Guards de Rutas** - Protección de rutas con autenticación
+- **Pipes Personalizados** - Filtros customizados para la aplicación
+
+## 🌐 API Externa
+
+La aplicación utiliza **JokeAPI v2** para obtener bromas de diferentes categorías:
+- **Documentación**: [https://v2.jokeapi.dev/](https://v2.jokeapi.dev/)
+- **Endpoint**: `https://v2.jokeapi.dev/joke/Programming,Spooky,Christmas?amount=10&safe-mode`
+- **Categorías soportadas**: Programming, Spooky, Christmas
+- **Modo seguro**: Activado para filtrar contenido inapropiado
+
+## 👥 Cuentas de Prueba
+
+El sistema incluye dos cuentas de usuario para testing:
+
+### Gerente (Manager)
+```
+Email: jlopez@grupobimbo.com
+Password: 123!*
+Rol: manager
+```
+
+### Coordinador (Coordinator)
+```
+Email: drodriguez@grupobimbo.com
+Password: 124!*
+Rol: coordinator
+```
+
+## 🔐 Sistema de Roles y Permisos
+
+### Gerente (Manager)
+- ✅ **Crear** nuevas bromas
+- ✅ **Editar** bromas existentes
+- ✅ **Eliminar** bromas
+- ✅ **Marcar como destacado** cualquier broma
+- ✅ **Ver** todas las bromas
+
+### Coordinador (Coordinator)
+- ✅ **Crear** nuevas bromas
+- ✅ **Marcar como destacado** cualquier broma
+- ✅ **Ver** todas las bromas
+- ❌ **NO puede editar** bromas existentes
+- ❌ **NO puede eliminar** bromas
+
+## 🌍 Funcionalidades Implementadas
+
+### ✅ Requisitos Obligatorios
+
+#### 1. **Sistema de Roles**
+- Implementación completa de roles con permisos diferenciados
+- Interfaz adaptativa según el rol del usuario
+- Protección a nivel de componente para acciones restringidas
+
+#### 2. **Gestión de Bromas Destacadas**
+- Funcionalidad para marcar/desmarcar bromas como destacadas
+- Sección especial para visualizar contenido destacado
+- Persistencia en localStorage
+
+#### 3. **CRUD de Bromas**
+- **Crear**: Formulario completo con validaciones personalizadas
+- **Leer**: Visualización en grid responsivo con filtros
+- **Actualizar**: Edición de bromas existentes (solo gerentes)
+- **Eliminar**: Eliminación con confirmación (solo gerentes)
+
+#### 4. **Diseño Responsivo**
+- Implementación completa con Tailwind CSS
+- Breakpoints para móvil, tablet y desktop
+- Menú hamburguesa para dispositivos móviles
+
+### ⭐ Funcionalidades Extra (Puntos Adicionales)
+
+#### 1. **Multiidioma (i18n)**
+- Soporte completo para **Español** e **Inglés**
+- Implementación con `@ngx-translate`
+- Cambio dinámico de idioma con persistencia
+- Archivos de traducción en `/public/i18n/`
+
+#### 2. **Pipe Personalizado**
+- **FilterDestacadosPipe**: Filtra bromas destacadas
+- Uso en componentes para separar contenido destacado
+
+#### 3. **Angular Standalone Components**
+- Todos los componentes son standalone
+- Sin uso de módulos tradicionales
+- Configuración moderna con `app.config.ts`
+
+#### 4. **Angular Signals**
+- Implementación extensiva de signals en toda la aplicación
+- Estado reactivo para filtros, menús móviles y datos
+- Reemplazo de BehaviorSubject en varios casos
+
+#### 5. **Sin Angular Material**
+- Implementación completa con Tailwind CSS
+- Componentes UI personalizados
+- SweetAlert2 para modales y alertas
+
+## 🏗️ Arquitectura del Proyecto
+
+```
+src/
+├── app/
+│   ├── core/
+│   │   ├── guards/           # Guards de autenticación
+│   │   ├── layout/           # Layout principal
+│   │   ├── models/           # Interfaces TypeScript
+│   │   ├── pages/            # Páginas principales
+│   │   └── services/         # Servicios de la aplicación
+│   ├── shared/
+│   │   ├── components/       # Componentes reutilizables
+│   │   ├── forms/           # Formularios
+│   │   ├── pipes/           # Pipes personalizados
+│   │   └── validators/      # Validadores personalizados
+│   ├── app.config.ts        # Configuración de la aplicación
+│   ├── app.routes.ts        # Rutas de la aplicación
+│   └── app.component.ts     # Componente raíz
+└── styles.css               # Estilos globales
+```
+
+## 🚀 Instalación y Ejecución
+
+### Prerrequisitos
+- Node.js (versión 18 o superior)
+- npm o yarn
+
+### Pasos de Instalación
+
+1. **Clonar el repositorio**
+```bash
+git clone https://github.com/luisvega1/prueba-bimbonet.git
+cd prueba-bimbonet
+```
+
+2. **Instalar dependencias**
+```bash
+npm install
+```
+
+3. **Ejecutar en modo desarrollo**
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+4. **Abrir en el navegador**
+```
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 📱 Funcionalidades de la Interfaz
 
-```bash
-ng generate --help
-```
+### Página de Login
+- Formulario de autenticación con validaciones
+- Soporte multiidioma
+- Redirección automática según rol
 
-## Building
+### Dashboard Principal
+- **Sección de Destacados**: Bromas marcadas como favoritas
+- **Sección de Todas las Bromas**: Lista completa con filtros
+- **Filtros Disponibles**:
+  - Por categoría (Programming, Spooky, Christmas)
+  - Ordenamiento alfabético
+- **Botón de Agregar**: Acceso rápido para crear nuevas bromas
 
-To build the project run:
+### Formulario de Bromas
+- **Validaciones Personalizadas**:
+  - Bromas simples: mínimo 20 caracteres
+  - Bromas de dos partes: ambos campos obligatorios
+- **Tipos de Broma**:
+  - **Single**: Una sola línea de texto
+  - **Two-part**: Setup + Punchline
+- **Categorías**: Programming, Spooky, Christmas
+- **Checkbox de Destacado**: Para marcar como favorito
 
-```bash
-ng build
-```
+### Tarjetas de Bromas
+- **Información mostrada**:
+  - Categoría de la broma
+  - Contenido completo (single o two-part)
+  - Botones de acción según rol
+- **Acciones disponibles**:
+  - ⭐ Marcar/desmarcar como destacado
+  - ✏️ Editar (solo gerentes)
+  - 🗑️ Eliminar (solo gerentes)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 🐛 Mejoras Identificadas
 
-## Running unit tests
+### Limitaciones Actuales
+1. **Traducción de Bromas**: Los chistes obtenidos de la API externa no se pueden traducir automáticamente con los archivos i18n
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
-```bash
-ng test
-```
+## 📄 Licencia
 
-## Running end-to-end tests
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
 
-For end-to-end (e2e) testing, run:
+## 👨‍💻 Autor
 
-```bash
-ng e2e
-```
+Desarrollado como parte de la prueba técnica para BimboNet.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- **Nota**: Este proyecto demuestra el uso de tecnologías modernas de Angular, incluyendo Standalone Components, Signals, y mejores prácticas de desarrollo frontend.
+- **Nota**: Esta documentación (solamente documentación) fue creada con **apoyo** de ChatGPT.
