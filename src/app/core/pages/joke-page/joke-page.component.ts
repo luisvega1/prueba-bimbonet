@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { JokeFormComponent } from '../../../shared/forms/joke-form/joke-form.component';
 import { ActivatedRoute } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-joke-page',
-  imports: [JokeFormComponent],
+  imports: [JokeFormComponent, TranslatePipe],
   templateUrl: './joke-page.component.html',
   styleUrl: './joke-page.component.css',
 })

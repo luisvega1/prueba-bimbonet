@@ -7,10 +7,18 @@ import { AuthService } from '../../services/auth.service';
 import { JokesService } from '../../services/jokes.service';
 import { JokeComponent } from '../../../shared/components/joke/joke.component';
 import { IJoke } from '../../models/joke.interface';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
-  imports: [JokeComponent, AsyncPipe, RouterLink, CommonModule, FormsModule],
+  imports: [
+    JokeComponent,
+    AsyncPipe,
+    RouterLink,
+    CommonModule,
+    FormsModule,
+    TranslatePipe,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -26,8 +34,6 @@ export class HomeComponent {
   public filtroCategoria = signal<string>('all');
   public filtroAlfabeticoActivo = signal<boolean>(false);
   public jokesFiltrados = signal<IJoke[]>([]);
-
-  public categorias = ['Programming', 'Christmas', 'Spooky'];
 
   constructor() {
     this.jokesService.initializeData();

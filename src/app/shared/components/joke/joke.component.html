@@ -3,7 +3,9 @@
   [ngClass]="{ 'w-75! sm:w-100!': destacado() }"
 >
   <div class="flex flex-row justify-between mb-3 items-center">
-    <h3 class="font-bold text-[14px]">Categoría: {{ joke().category }}</h3>
+    <h3 class="font-bold text-[14px]">
+      {{ "jokeForm.categoria" | translate }}: {{ joke().category }}
+    </h3>
     <div>
       <button class="mx-1 cursor-pointer" (click)="handleAddDestacado()">
         @if (!joke().destacado) {
