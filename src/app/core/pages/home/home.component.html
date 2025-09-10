@@ -28,8 +28,41 @@
 </section>
 <section class="my-5">
   <h2 class="font-bold text-2xl mb-5">Todo el contenido:</h2>
+
+  <div class="mb-6 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+    <div class="flex flex-row gap-4 items-start sm:items-center">
+      <div class="flex flex-col">
+        <label for="categoryFilter" class="font-bold text-sm mb-1"
+          >Filtrar por categoría:</label
+        >
+        <select
+          id="categoryFilter"
+          class="shadow-md border border-gray-200 rounded-lg p-2 min-w-[150px]"
+          [value]="filtroCategoria()"
+          (change)="handleCambioCategoria($event)"
+        >
+          <option value="all">Todas las categorías</option>
+          @for (category of categorias; track category) {
+            <option [value]="category">{{ category }}</option>
+          }
+        </select>
+      </div>
+      <div class="flex flex-col">
+        <label class="font-bold text-sm mb-1">Ordenar:</label>
+        <button
+          type="button"
+          class="px-4 py-2 rounded-lg border border-gray-200 shadow-md hover:bg-gray-50 transition-colors"
+          (click)="handleOrdenarAlfabetico()"
+        >
+          <i class="fa-solid fa-sort-alpha-down mr-2"></i>
+          {{ filtroAlfabeticoActivo() ? "A-Z (Activo)" : "A-Z" }}
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-    @for (joke of jokes$ | async; track joke.id) {
+    @for (joke of jokesFiltrados(); track joke.id) {
       <app-joke [joke]="joke" />
     } @empty {
       <p>
