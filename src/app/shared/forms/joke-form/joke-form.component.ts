@@ -9,10 +9,11 @@ import {
 import { Router } from '@angular/router';
 import { jokeValidator } from '../../validators/joke.validator';
 import { JokesService } from '../../../core/services/jokes.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-joke-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslatePipe],
   templateUrl: './joke-form.component.html',
   styleUrl: './joke-form.component.css',
 })

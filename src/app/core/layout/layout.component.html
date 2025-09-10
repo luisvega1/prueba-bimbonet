@@ -2,8 +2,20 @@
   <div class="max-w-2xl lg:max-w-7xl mx-auto flex justify-between items-center">
     <img src="logo_ipsum.png" alt="Logo impsum" class="w-[150px]" />
     <nav class="ml-auto">
-      <a class="mx-2">Lang:</a>
-      <a class="mx-2 cursor-pointer" (click)="handleLogout()">
+      <a class="mx-2">
+        {{ "layout.idioma" | translate }}:
+        <select
+          class="bg-white ms-2 px-3 py-1 rounded-md shadow-sm"
+          (change)="handleCambioIdioma($event)"
+        >
+          <option value="es">{{ "layout.esp" | translate }}</option>
+          <option value="en">{{ "layout.eng" | translate }}</option>
+        </select>
+      </a>
+      <a
+        class="mx-2 cursor-pointer rounded-full bg-white shadow-sm p-2"
+        (click)="handleLogout()"
+      >
         <i class="fa-solid fa-right-from-bracket"></i>
       </a>
     </nav>

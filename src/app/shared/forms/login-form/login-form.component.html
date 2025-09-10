@@ -10,7 +10,7 @@
     />
   </div>
   <div class="my-10">
-    <label for="password">Contraseña</label>
+    <label for="password">{{ "login.password" | translate }}</label>
     <input
       id="password"
       class="shadow-md border border-gray-200 rounded-lg p-2 w-full"
@@ -23,6 +23,6 @@
     type="submit"
     [disabled]="!loginForm.valid"
   >
-    Ingresar
+    {{ "login.logInButton" | translate }}
   </button>
 </form>

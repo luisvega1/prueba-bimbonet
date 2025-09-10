@@ -5,10 +5,11 @@ import { SwalDirective } from '@sweetalert2/ngx-sweetalert2';
 import { IJoke } from '../../../core/models/joke.interface';
 import { AuthService } from '../../../core/services/auth.service';
 import { JokesService } from '../../../core/services/jokes.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-joke',
-  imports: [SwalDirective, CommonModule, RouterLink],
+  imports: [SwalDirective, CommonModule, RouterLink, TranslatePipe],
   templateUrl: './joke.component.html',
   styleUrl: './joke.component.css',
 })
