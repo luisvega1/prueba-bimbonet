@@ -1,4 +1,9 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  inject,
+  provideAppInitializer,
+  provideZoneChangeDetection,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 
@@ -22,6 +27,12 @@ export const appConfig: ApplicationConfig = {
         prefix: '/i18n/',
         suffix: '.json',
       }),
+    }),
+    provideAppInitializer(() => {
+      const translate = inject(TranslateService);
+      const lang = translate.getBrowserLang();
+      translate.use(lang || 'es');
+      localStorage.setItem('lang', JSON.stringify(lang || 'es'));
     }),
   ],
 };
